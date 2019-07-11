@@ -31,9 +31,22 @@ class App extends React.Component {
             }]
         }
     }
+    add(title,singer){
+        let data = this.state.data
+        let musicobj = {
+            title:title,
+            singer:singer,
+            like:false,
+            selected:false
+        }
+        data.push(musicobj)
+        this.setState({
+            data
+        })
+    }
     render(){
         return <div id="musiclist">
-                   <Header/>
+                   <Header add={this.add.bind(this)}/>
                    <Main data={this.state.data}/>
                    <Footer/>
                </div>
