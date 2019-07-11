@@ -32,17 +32,20 @@ thead{
     background: #eee;
     font-size: 14px;
 }
+tbody>tr:hover{
+    background: aquamarine;
+}
 
 th,td{
     text-align: center;
     padding: 4px 0;
 }
 
-.like{
+.like td{
     background: peachpuff;
 }
 
-.select{
+.select td{
     background: khaki;
 }
 

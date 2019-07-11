@@ -1,12 +1,14 @@
 import React from 'react';
+import Item from './item'
 
 export default class Main extends React.Component{
     render(){
-        return <table className="main">
+        let data = this.props.data
+        return <table className="main" style={{display:data.length?"table":"none"}}>
                        <thead>
                             <tr>
                                 <td>
-                                    <input type="checkbox"/>
+                                    <input type="checkbox" name=""/>
                                     全选
                                 </td>
                                 <td>歌曲</td>
@@ -16,27 +18,11 @@ export default class Main extends React.Component{
                             </tr>
                        </thead>
                        <tbody>
-                       <tr className="like">
-                           <td><input type="checkbox"/></td>
-                           <td>空白格</td>
-                           <td>蔡健雅</td>
-                           <td><input type="checkbox" checked/></td>
-                           <td><a>X</a></td>
-                       </tr>
-                       <tr>
-                           <td><input type="checkbox"/></td>
-                           <td>unicorn</td>
-                           <td>泽野弘之</td>
-                           <td><input type="checkbox"/></td>
-                           <td><a>X</a></td>
-                       </tr>
-                       <tr className="select">
-                           <td><input type="checkbox" checked/></td>
-                           <td>夏伤</td>
-                           <td>sara</td>
-                           <td><input type="checkbox"/></td>
-                           <td><a>X</a></td>
-                       </tr>
+                       {
+                           data.map((item,index)=>{
+                             return  <Item key={index} item={item}/>
+                           })
+                       }
                        </tbody>
                    </table>
     }
