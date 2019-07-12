@@ -49,6 +49,10 @@ th,td{
     background: khaki;
 }
 
+a{
+    cursor: pointer;
+}
+
 .info{
     margin-bottom: 10px;
 }

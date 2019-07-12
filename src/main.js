@@ -8,7 +8,11 @@ export default class Main extends React.Component{
                        <thead>
                             <tr>
                                 <td>
-                                    <input type="checkbox" name=""/>
+                                    <input type="checkbox"
+                                           checked= {this.props.isCheckAll}
+                                           onChange={(e)=>{
+                                               this.props.setCheckAll(e.target.checked)
+                                           }}/>
                                     全选
                                 </td>
                                 <td>歌曲</td>
@@ -20,7 +24,11 @@ export default class Main extends React.Component{
                        <tbody>
                        {
                            data.map((item,index)=>{
-                             return  <Item key={index} item={item}/>
+                             return  <Item key={index} item={item}
+                                       index={index}
+                                       setCheck={this.props.setCheck}
+                                       setLike={this.props.setLike}
+                                       remove={this.props.remove}/>
                            })
                        }
                        </tbody>
