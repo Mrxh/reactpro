@@ -28,12 +28,12 @@ export default class Footer extends React.Component{
                        }} style={{display:selectedLength?"inline-block":"none"}}/>
                 <input type="button" value="查看收藏清单"
                        onClick={()=>{
-                           this.props.searchList("like")
+                           this.props.searchList(false)
                        }} style={{display:(listState && likeLength)?"inline-block":"none"}}/>
                 <input type="button" value="查看所有清单"
                        onClick={()=>{
-                           this.props.searchList("all")
-                       }} style={{display:!(listState && likeLength)?"inline-block":"none"}}/>
+                           this.props.searchList(true)
+                       }} style={{display:(!listState && likeLength)?"inline-block":"none"}}/>
               </footer>
     }
 }

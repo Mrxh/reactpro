@@ -4,6 +4,7 @@ import Item from './item'
 export default class Main extends React.Component{
     render(){
         let data = this.props.data
+        let listState= this.props.listState
         return <table className="main" style={{display:data.length?"table":"none"}}>
                        <thead>
                             <tr>
@@ -28,7 +29,8 @@ export default class Main extends React.Component{
                                        index={index}
                                        setCheck={this.props.setCheck}
                                        setLike={this.props.setLike}
-                                       remove={this.props.remove}/>
+                                       remove={this.props.remove}
+                                       listState={listState}/>
                            })
                        }
                        </tbody>

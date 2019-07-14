@@ -3,7 +3,9 @@ import React from 'react';
 export default class Item extends React.Component{
     render(){
         let item = this.props.item
-        return <tr className={(item.like?"like":"")+(item.selected?" select":"")}>
+        let listState= this.props.listState
+        if(listState || (!listState && item.like)){
+            return <tr className={(item.like?"like":"")+(item.selected?" select":"")}>
                 <td><input type="checkbox"
                            checked={item.selected?true:false}
                            onChange={(e)=>{
@@ -14,11 +16,15 @@ export default class Item extends React.Component{
                 <td><input type="checkbox"
                            checked={item.like?true:false}
                            onChange={(e)=>{
-                              this.props.setLike(this.props.index,e.target.checked)
+                               this.props.setLike(this.props.index,e.target.checked)
                            }}/></td>
                 <td><a onClick={()=>{
                     this.props.remove(this.props.index)
                 }}>X</a></td>
-               </tr>
+            </tr>
+        }else{
+            return <tr></tr>
+        }
+
     }
 }

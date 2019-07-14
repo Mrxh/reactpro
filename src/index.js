@@ -29,8 +29,7 @@ class App extends React.Component {
                 singer:'Sara',
                 like:false,
                 selected:true,
-            }],
-            alldata:this.data
+            }]
         }
         this.add = this.add.bind(this)
         this.isCheckAll = this.isCheckAll.bind(this)
@@ -114,19 +113,22 @@ class App extends React.Component {
             data
         })
     }
-    searchList(flag){
-        // if(flag==="all"){
-        //
-        // }
-        // this.setState({
-        //     alldata:this.state.data
-        // })
-        console.log(this.state.alldata)
-
-        let data = this.state.data.filter(val=>val.like)
+    searchList(state){
         this.setState({
-            data
+            listState:state
         })
+    }
+    shouldComponentUpdate(nextProps,nextState){
+        if(!nextState.listState){
+            let likeLength = nextState.data.filter((val)=>val.like).length
+            if(likeLength===0){
+                this.setState({
+                    listState:true
+                })
+                return false
+            }
+        }
+        return true
     }
     render(){
         let data = this.state.data
@@ -140,6 +142,7 @@ class App extends React.Component {
                          setCheckAll={this.setCheckAll}
                          setLike={this.setLike}
                          remove={this.remove}
+                         listState={this.state.listState}
                    />
                    <Footer data={data}
                            removeSel={this.removeSel}
